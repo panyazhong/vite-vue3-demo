@@ -7,17 +7,23 @@
       <nav-bar></nav-bar>
     </div>
 
-    <div>UserInfo</div>
+    <div @click="testA">UserInfo</div>
   </div>
 </template>
 
 <script>
 import NavBar from './Navbar.vue';
 import Logo from '@/assets/logo.png';
+
+import { testApi } from '@/api/test';
 export default {
   setup() {
+    const testA = async () => {
+      await testApi();
+    };
     return {
       Logo,
+      testA,
     };
   },
   components: {
