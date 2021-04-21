@@ -15,10 +15,13 @@
 import NavBar from './Navbar.vue';
 import Logo from '@/assets/logo.png';
 
+import screenful from 'screenfull';
+
 import { testApi } from '@/api/test';
 export default {
   setup() {
     const testA = async () => {
+      screenful.toggle();
       await testApi();
     };
     return {

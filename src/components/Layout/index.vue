@@ -8,12 +8,18 @@
 </template>
 
 <script lang="ts">
+import { onMounted } from 'vue';
 import SysHeader from './components/SysHeader.vue';
 export default {
   components: {
     SysHeader,
   },
-  setup() {},
+  setup() {
+    const a = () => {
+      console.log(this.$store);
+    };
+    onMounted(a);
+  },
 };
 </script>
 
