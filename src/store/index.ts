@@ -1,0 +1,17 @@
+import { createStore } from 'vuex';
+
+export default createStore({
+  state() {
+    return {
+      count: 0,
+    };
+  },
+  mutations: {},
+  actions: {},
+  modules: {},
+  getters: {
+    count(state: any) {
+      return state.count;
+    },
+  },
+});
