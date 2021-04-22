@@ -8,6 +8,7 @@
     </div>
 
     <div @click="testA">UserInfo</div>
+    <div @click="login">登录</div>
   </div>
 </template>
 
@@ -16,17 +17,26 @@ import NavBar from './Navbar.vue';
 import Logo from '@/assets/logo.png';
 
 import screenful from 'screenfull';
+import { useRoute, useRouter } from 'vue-router';
 
 import { testApi } from '@/api/test';
+
 export default {
   setup() {
+    const route = useRoute();
+    const router = useRouter();
+
     const testA = async () => {
       screenful.toggle();
       await testApi();
     };
+    const login = async () => {
+      router.push('/login');
+    };
     return {
       Logo,
       testA,
+      login,
     };
   },
   components: {

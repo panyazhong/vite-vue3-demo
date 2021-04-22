@@ -1,18 +1,11 @@
 import { RouteRecordRaw } from 'vue-router';
-import Layout from '@/components/Layout/index.vue';
+import Login from '@/views/login/index.vue';
 
 const hiddenRoutes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Layout,
-    children: [
-      {
-        path: 'dashboard',
-        name: 'Dashboard',
-        component: () => import('../views/dashboard/index.vue'),
-      },
-    ],
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
 ];
 

@@ -15,9 +15,7 @@ export default {
     SysHeader,
   },
   setup() {
-    const a = () => {
-      console.log(this.$store);
-    };
+    const a = () => {};
     onMounted(a);
   },
 };

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '../components/Layout/index.vue';
 import hiddenRoutes from './hide';
 import echartsRoutes from './modules/echarts';
@@ -28,6 +28,6 @@ const constantRoutes: Array<RouteRecordRaw> = [
 const asyncRoutes: Array<RouteRecordRaw> = [...echartsRoutes];
 
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: constantRoutes,
 });
