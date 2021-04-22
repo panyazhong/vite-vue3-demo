@@ -55,6 +55,7 @@
 import Logo from '@/assets/logo.png';
 import { reactive, defineComponent, UnwrapRef } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 interface FormState {
   name: string;
   region: string | undefined;
@@ -72,8 +73,10 @@ export default defineComponent({
     });
 
     const router = useRouter();
+    const store = useStore();
 
     const login = async () => {
+      store.dispatch('Login');
       router.push('/dashboard');
     };
     return {

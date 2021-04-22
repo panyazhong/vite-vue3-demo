@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import routes from './modules/routes';
+import user from './modules/user';
 
 export default createStore({
   state() {
@@ -11,6 +12,7 @@ export default createStore({
   actions: {},
   modules: {
     routes,
+    user,
   },
   getters: {
     count(state: any) {
