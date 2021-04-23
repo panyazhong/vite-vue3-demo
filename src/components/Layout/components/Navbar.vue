@@ -1,44 +1,41 @@
 <template>
   <div>
     <a-menu v-model="current" mode="horizontal" theme="dark">
-      <a-menu-item key="mail">
-        <a-icon type="mail" />Navigation One
-      </a-menu-item>
-      <a-menu-item key="app" disabled>
-        <a-icon type="appstore" />Navigation Two
-      </a-menu-item>
-      <a-sub-menu>
-        <span slot="title" class="submenu-title-wrapper"
-          ><a-icon type="setting" />Navigation Three - Submenu</span
-        >
-        <a-menu-item-group title="Item 1">
-          <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-          <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group title="Item 2">
-          <a-menu-item key="setting:3"> Option 3 </a-menu-item>
-          <a-menu-item key="setting:4"> Option 4 </a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-menu-item key="alipay">
-        <a href="https://antdv.com" target="_blank" rel="noopener noreferrer"
-          >Navigation Four - Link</a
-        >
-      </a-menu-item>
+      <div v-for="route in routes" :key="route.name">
+        <a-menu-item v-if="!route.children.length" :key="route.name">
+          {{ route.name }}
+        </a-menu-item>
+        <a-sub-menu v-else>
+          <template #title>
+            <span class="submenu-title-wrapper">
+              <setting-outlined />
+              {{ route.name }}
+            </span>
+          </template>
+          <a-menu-item v-for="child in route.children" :key="child.name">
+            {{ child.name }}
+          </a-menu-item>
+        </a-sub-menu>
+      </div>
     </a-menu>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue"
+import { ref, defineComponent, computed, toRefs, reactive } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
-  setup:() => {
-    const current = ref(["mail"]);
+  setup: () => {
+    const current = ref(['mail']);
 
-    return { current };
-  }
-})
+    const store = useStore();
+
+    const routes = computed(() => store.getters.routes);
+
+    return { current, routes };
+  },
+});
 </script>
 
 <style></style>

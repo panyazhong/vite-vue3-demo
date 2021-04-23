@@ -25,26 +25,6 @@
           <a-form-item>
             <a-button type="primary" @click="login">Submit</a-button>
           </a-form-item>
-          <!-- <a-form-item label="Gender">
-          <a-select
-            v-decorator="[
-              'gender',
-              {
-                rules: [
-                  { required: true, message: 'Please select your gender!' },
-                ],
-              },
-            ]"
-            placeholder="Select a option and change input text above"
-            @change="handleSelectChange"
-          >
-            <a-select-option value="male"> male </a-select-option>
-            <a-select-option value="female"> female </a-select-option>
-          </a-select>
-        </a-form-item> -->
-          <!-- <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-          <a-button type="primary" html-type="submit"> Submit </a-button>
-        </a-form-item> -->
         </a-form>
       </div>
     </div>
@@ -58,11 +38,7 @@ import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 interface FormState {
   name: string;
-  region: string | undefined;
-  delivery: boolean;
-  type: string[];
-  resource: string;
-  desc: string;
+  password: string;
 }
 
 export default defineComponent({
@@ -98,7 +74,10 @@ export default defineComponent({
   background: rgb(0, 21, 41);
   .login-form {
     width: 400px;
-    background: #efefef;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #efefef;
+    // background: rgb(250, 250, 250, 0.8);
+    color: #efefef;
     position: absolute;
     left: 50%;
     top: 30%;
@@ -106,6 +85,10 @@ export default defineComponent({
     display: flex;
     justify-content: space-around;
     align-items: center;
+    h3 {
+      color: #efefef;
+      margin-top: 10px;
+    }
     img {
       width: 150px;
     }

@@ -19,6 +19,8 @@ import Logo from '@/assets/logo.png';
 import screenful from 'screenfull';
 import { useRoute, useRouter } from 'vue-router';
 
+import { filterRoutes } from '@/store/modules/router';
+import { asyncRoutes } from '@/router/index';
 import { testApi } from '@/api/test';
 
 export default {
@@ -27,8 +29,9 @@ export default {
     const router = useRouter();
 
     const testA = async () => {
-      screenful.toggle();
-      await testApi();
+      console.log(filterRoutes(asyncRoutes));
+      // screenful.toggle();
+      // await testApi();
     };
     const login = async () => {
       router.push('/login');

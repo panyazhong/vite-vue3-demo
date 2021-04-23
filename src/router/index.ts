@@ -1,9 +1,14 @@
-import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router';
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  RouteRecordRaw,
+} from 'vue-router';
 import Layout from '../components/Layout/index.vue';
 import hiddenRoutes from './hide';
 import echartsRoutes from './modules/echarts';
 
-const constantRoutes: Array<RouteRecordRaw> = [
+export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
   {
     path: '/',
@@ -25,7 +30,7 @@ const constantRoutes: Array<RouteRecordRaw> = [
   },
 ];
 
-const asyncRoutes: Array<RouteRecordRaw> = [...echartsRoutes];
+export const asyncRoutes: Array<RouteRecordRaw> = [...echartsRoutes];
 
 export default createRouter({
   history: createWebHashHistory(),

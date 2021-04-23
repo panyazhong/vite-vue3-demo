@@ -1,7 +1,9 @@
-import { setToken } from '@/utils/cookie';
+import { setToken } from '../../utils/cookie';
 
 const user = {
-  state: {},
+  state: {
+    token: '',
+  },
   mutations: {},
   actions: {
     Login() {
