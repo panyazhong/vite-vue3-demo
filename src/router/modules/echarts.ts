@@ -17,7 +17,7 @@ const echartsRoutes: Array<RouteRecordRaw> = [
         meta: {
           roles: ['admin', 'user'],
         },
-        component: () => import('@/components/HelloWorld.vue'),
+        component: () => import('@/views/echarts/index.vue'),
       },
       {
         path: 'edit_charts',

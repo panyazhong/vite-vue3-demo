@@ -38,8 +38,8 @@ const routes = {
     GenerateRoutes({ commit }: { commit: any }) {
       return new Promise(async (resolve, reject) => {
         let routes = [
-          ...filterRoutes(asyncRoutes),
           ...filterRoutes(constantRoutes),
+          ...filterRoutes(asyncRoutes),
         ];
 
         resolve(routes);

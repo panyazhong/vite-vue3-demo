@@ -48,7 +48,7 @@ export default defineComponent({
       { name } = route;
 
     current.value = [name];
-    
+
     const routeLink = (val: any) => {
       const { key } = val;
       router.push({
@@ -61,4 +61,12 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.ant-menu-horizontal {
+  line-height: 57px;
+  .ant-menu-submenu-selected {
+    border-bottom: 3px solid #1890ff;
+    color: #1890ff;
+  }
+}
+</style>
