@@ -7,8 +7,10 @@
       <nav-bar></nav-bar>
     </div>
 
-    <div @click="testA">UserInfo</div>
-    <div @click="login">登录</div>
+    <div>
+      <span @click="testA">UserInfo</span>
+      <a-button type="link" @click="login">登录</a-button>
+    </div>
   </div>
 </template>
 

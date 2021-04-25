@@ -1,6 +1,8 @@
 import { RouteRecordRaw } from 'vue-router';
 import { asyncRoutes, constantRoutes } from '../../router/index';
 
+import router from '../../router';
+
 function hasPermission(temp: any, role: string) {
   return temp.meta.roles.includes(role);
 }
@@ -12,7 +14,6 @@ export function filterRoutes(routes: any) {
     const temp = { ...route };
 
     if (!!temp.children) {
-      console.log('children:', filterRoutes(route.children));
       temp.children = filterRoutes(route.children);
     }
 
@@ -20,6 +21,7 @@ export function filterRoutes(routes: any) {
       res.push(temp);
     }
   });
+
   return res;
 }
 
@@ -34,9 +36,15 @@ const routes = {
   },
   actions: {
     GenerateRoutes({ commit }: { commit: any }) {
-      let routes = filterRoutes(asyncRoutes);
-      console.log(routes);
-      commit('SET_ROUTES', routes);
+      return new Promise(async (resolve, reject) => {
+        let routes = [
+          ...filterRoutes(asyncRoutes),
+          ...filterRoutes(constantRoutes),
+        ];
+
+        resolve(routes);
+        commit('SET_ROUTES', routes);
+      });
     },
   },
 };

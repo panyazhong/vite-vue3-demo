@@ -16,6 +16,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     component: Layout,
     meta: {
       title: '首页',
+      roles: ['admin'],
     },
     children: [
       {
@@ -23,6 +24,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         name: 'Dashboard',
         meta: {
           title: '概览',
+          roles: ['admin'],
         },
         component: () => import('../views/dashboard/index.vue'),
       },
@@ -30,9 +32,20 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   },
 ];
 
-export const asyncRoutes: Array<RouteRecordRaw> = [...echartsRoutes];
+export const asyncRoutes: Array<RouteRecordRaw> = [
+  ...echartsRoutes,
+  // {
+  //   path: '*',
+  //   redirect: '/404',
+  // },
+];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
+  // scrollBehavior: (to: any, from: any, savedOptions: any) => {
+  //   y: 0;
+  // },
   routes: constantRoutes,
 });
+
+export default router;

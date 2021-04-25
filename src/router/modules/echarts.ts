@@ -6,6 +6,7 @@ const echartsRoutes: Array<RouteRecordRaw> = [
     path: '/echarts',
     name: 'Echarts',
     component: Layout,
+    redirect: '/echarts/line_charts',
     meta: {
       roles: ['admin', 'user'],
     },
