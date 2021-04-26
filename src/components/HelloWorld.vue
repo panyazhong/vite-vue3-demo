@@ -1,8 +1,10 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <div>
+    <h1>{{ msg }}</h1>
 
-  <button @click="set">count is: {{ count }}</button>
-  <a-button @click="set" type="primary"> 点我加{{ count }} </a-button>
+    <button @click="set">count is: {{ count }}</button>
+    <a-button @click="set" type="primary"> 点我加{{ count }} </a-button>
+  </div>
 </template>
 
 <script lang="ts">

@@ -7,6 +7,8 @@ import {
 import Layout from '../components/Layout/index.vue';
 import hiddenRoutes from './hide';
 import echartsRoutes from './modules/echarts';
+import tableRoutes from './modules/table';
+import tabRoutes from './modules/tab';
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
@@ -34,6 +36,8 @@ export const constantRoutes: Array<RouteRecordRaw> = [
 
 export const asyncRoutes: Array<RouteRecordRaw> = [
   ...echartsRoutes,
+  ...tableRoutes,
+  ...tabRoutes,
   // {
   //   path: '*',
   //   redirect: '/404',

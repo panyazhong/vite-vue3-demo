@@ -1,27 +1,27 @@
 <template>
-  <div class="">
+  <div>
     <panel-title></panel-title>
 
-    <div class="chart-box">
-      <line-charts></line-charts>
-    </div>
+    <mix-charts class="mix-charts"></mix-charts>
   </div>
 </template>
 
 <script lang="ts">
-import panelTitle from '@/components/panelTitle/index.vue';
-import LineCharts from './components/line_charts.vue';
 import { defineComponent } from 'vue';
+import panelTitle from '@/components/panelTitle/index.vue';
+import mixCharts from './components/mix_charts.vue';
+
 export default defineComponent({
   setup() {},
   components: {
-    LineCharts,
     panelTitle,
+    mixCharts,
   },
 });
 </script>
 
 <style scoped lang="scss">
-.chart-box {
+.mix-charts {
+
 }
 </style>

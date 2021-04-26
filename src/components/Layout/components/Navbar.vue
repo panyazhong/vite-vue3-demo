@@ -12,17 +12,17 @@
           v-if="!route.children && !route.meta.hidden"
           :key="route.name"
         >
-          <span>{{ route.name }}</span>
+          <span>{{ route.meta.title }}</span>
         </a-menu-item>
         <a-sub-menu v-if="route.children">
           <template #title>
             <span class="submenu-title-wrapper">
               <setting-outlined />
-              {{ route.name }}
+              {{ route.meta.title }}
             </span>
           </template>
           <a-menu-item v-for="child in route.children" :key="child.name">
-            <span v-if="!child.meta.hidden">{{ child.name }}</span>
+            <span v-if="!child.meta.hidden">{{ child.meta.title }}</span>
           </a-menu-item>
         </a-sub-menu>
       </div>

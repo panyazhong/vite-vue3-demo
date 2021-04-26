@@ -9,6 +9,7 @@ const echartsRoutes: Array<RouteRecordRaw> = [
     redirect: '/echarts/line_charts',
     meta: {
       roles: ['admin', 'user'],
+      title: '图表',
     },
     children: [
       {
@@ -16,16 +17,18 @@ const echartsRoutes: Array<RouteRecordRaw> = [
         name: 'LineCharts',
         meta: {
           roles: ['admin', 'user'],
+          title: '柱状图',
         },
         component: () => import('@/views/echarts/index.vue'),
       },
       {
-        path: 'edit_charts',
-        name: 'EditCharts',
+        path: 'mix_charts',
+        name: 'MixCharts',
         meta: {
           roles: ['user', 'admin'],
+          title: '混合图表',
         },
-        component: () => import('@/components/HelloWorld.vue'),
+        component: () => import('@/views/mixEcharts/index.vue'),
       },
     ],
   },

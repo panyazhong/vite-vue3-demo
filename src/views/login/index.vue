@@ -13,7 +13,8 @@
           class="form"
         >
           <a-form-item label="">
-            <a-input v-model:value="formState.name" placeholder="Username" />
+            <a-input v-model:value="formState.name" placeholder="Username">
+            </a-input>
           </a-form-item>
           <a-form-item label="">
             <a-input
@@ -73,11 +74,11 @@ export default defineComponent({
   bottom: 0;
   background: rgb(0, 21, 41);
   .login-form {
-    width: 400px;
+    width: 500px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #efefef;
+    // box-shadow: 0px 0px 10px #efefef;
     // background: rgb(250, 250, 250, 0.8);
-    color: #efefef;
+    color: #eee;
     position: absolute;
     left: 50%;
     top: 30%;
@@ -86,17 +87,20 @@ export default defineComponent({
     justify-content: space-around;
     align-items: center;
     h3 {
-      color: #efefef;
+      color: #eee;
       margin-top: 10px;
+      font-size: 26px;
     }
     img {
       width: 150px;
     }
     .form {
-      width: 200px;
+      width: 300px;
       margin-top: 20px;
       .ant-input {
         width: 100%;
+        background-color: rgb(5, 21, 41);
+        border: 1px solid #606266;
       }
       .ant-btn {
         width: 100%;

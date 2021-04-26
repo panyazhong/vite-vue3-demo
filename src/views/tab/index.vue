@@ -1,27 +1,22 @@
 <template>
-  <div class="">
+  <div>
     <panel-title></panel-title>
 
-    <div class="chart-box">
-      <line-charts></line-charts>
-    </div>
+    <tab-com></tab-com>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import panelTitle from '@/components/panelTitle/index.vue';
-import LineCharts from './components/line_charts.vue';
+import tabCom from './components/tab.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   setup() {},
   components: {
-    LineCharts,
     panelTitle,
+    tabCom,
   },
 });
 </script>
 
-<style scoped lang="scss">
-.chart-box {
-}
-</style>
+<style></style>

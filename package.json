@@ -10,6 +10,7 @@
     "ant-design-vue": "^2.1.2",
     "axios": "^0.21.1",
     "echarts": "^5.1.0",
+    "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.0.5",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",
+    "@types/lodash-es": "^4.17.4",
     "@types/ngprogress": "^1.0.29",
     "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^1.2.1",

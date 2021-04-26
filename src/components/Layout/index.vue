@@ -1,18 +1,27 @@
 <template>
   <div>
     <sys-header></sys-header>
-    <transition name="fade-transform" mode="out-in">
-      <router-view class="content-container"></router-view>
-    </transition>
+
+    <div class="content-container">
+      <bread-crumb></bread-crumb>
+      <router-view v-slot="{ Component }">
+        <transition name="fade-transform" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { onMounted } from 'vue';
 import SysHeader from './components/SysHeader.vue';
+import breadCrumb from '../breadCrumb/index.vue';
+
 export default {
   components: {
     SysHeader,
+    breadCrumb,
   },
   setup() {
     const a = () => {};
@@ -21,10 +30,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .content-container {
   margin-top: 60px;
   padding: 20px;
+  ::v-deep .ant-breadcrumb {
+    margin-bottom: 20px;
+  }
 }
 /*fade-transform*/
 .fade-transform-leave-active,
@@ -32,7 +44,7 @@ export default {
   transition: all 0.5s;
 }
 
-.fade-transform-enter {
+.fade-transform-enter-from {
   opacity: 0;
   transform: translateX(-30px);
 }
