@@ -1,22 +1,32 @@
 <template>
   <div>
-    <sys-header></sys-header>
+    <a-config-provider :locale="locale === 'en' ? enUS : zhCN">
+      <sys-header></sys-header>
 
-    <div class="content-container">
-      <bread-crumb></bread-crumb>
-      <router-view v-slot="{ Component }">
-        <transition name="fade-transform" mode="out-in">
-          <component :is="Component" />
-        </transition>
-      </router-view>
-    </div>
+      <div class="content-container">
+        <bread-crumb></bread-crumb>
+        {{ locale }}
+        <router-view v-slot="{ Component }">
+          <transition name="fade-transform" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
+      </div>
+    </a-config-provider>
   </div>
 </template>
 
 <script lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
 import SysHeader from './components/SysHeader.vue';
 import breadCrumb from '../breadCrumb/index.vue';
+import enUS from 'ant-design-vue/es/locale/en_US';
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
+import moment from 'moment';
+import 'moment/dist/locale/zh-cn';
+
+moment.locale('en');
 
 export default {
   components: {
@@ -25,7 +35,17 @@ export default {
   },
   setup() {
     const a = () => {};
+    const store = useStore();
+
+    const language = computed(() => store.getters.language);
+
     onMounted(a);
+
+    return {
+      enUS,
+      zhCN,
+      locale: language,
+    };
   },
 };
 </script>

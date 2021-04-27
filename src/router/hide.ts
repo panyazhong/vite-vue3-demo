@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 import Login from '@/views/login/index.vue';
+import Layout from '../components/Layout/index.vue';
 
 const hiddenRoutes: Array<RouteRecordRaw> = [
   {

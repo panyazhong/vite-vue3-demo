@@ -4,6 +4,9 @@ const getters = {
 
   // routes
   routes: (state: any) => state.router.routes,
+
+  // locale
+  language: (state: any) => state.locale.language,
 };
 
 export default getters;

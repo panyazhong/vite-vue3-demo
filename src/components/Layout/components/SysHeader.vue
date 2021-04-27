@@ -11,6 +11,17 @@
       <span class="icon" @click="fullscreen"><FullscreenOutlined /></span>
       <span @click="testA">UserInfo</span>
       <a-button type="link" @click="login">登录</a-button>
+
+      <a-dropdown :placement="placement">
+        <GlobalOutlined />
+        <template #overlay>
+          <a-menu>
+            <a-menu-item v-for="language in languages" :key="language.value">
+              {{ language.label }}
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
     </div>
   </div>
 </template>
@@ -18,18 +29,24 @@
 <script>
 import NavBar from './Navbar.vue';
 import Logo from '@/assets/logo.png';
-import { FullscreenOutlined } from '@ant-design/icons-vue';
+import { FullscreenOutlined, GlobalOutlined } from '@ant-design/icons-vue';
 
 import screenful from 'screenfull';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
-import { filterRoutes } from '@/store/modules/router';
-import { asyncRoutes } from '@/router/index';
-import { testApi } from '@/api/test';
+const languages = [
+  {
+    label: '简体中文',
+    value: 'zh',
+  },
+  {
+    label: 'english',
+    value: 'en',
+  },
+];
 
 export default {
   setup() {
-    const route = useRoute();
     const router = useRouter();
 
     const fullscreen = async () => {
@@ -42,11 +59,14 @@ export default {
       Logo,
       fullscreen,
       login,
+      placement: 'bottomRight',
+      languages,
     };
   },
   components: {
     NavBar,
     FullscreenOutlined,
+    GlobalOutlined,
   },
 };
 </script>
@@ -64,6 +84,7 @@ export default {
   height: 60px;
   color: #efefef;
   background-color: rgb(0, 21, 41);
+  padding: 0px 20px;
   .header-right {
     display: flex;
     align-items: center;

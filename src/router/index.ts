@@ -9,6 +9,7 @@ import hiddenRoutes from './hide';
 import echartsRoutes from './modules/echarts';
 import tableRoutes from './modules/table';
 import tabRoutes from './modules/tab';
+import clipboardRoutes from './modules/clipboard';
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
@@ -17,15 +18,16 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Layout,
     meta: {
-      title: '首页',
+      title: '概览',
       roles: ['admin'],
+      click: false,
     },
     children: [
       {
         path: 'dashboard',
         name: 'Dashboard',
         meta: {
-          title: '概览',
+          title: '概览页',
           roles: ['admin'],
         },
         component: () => import('../views/dashboard/index.vue'),
@@ -38,6 +40,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...echartsRoutes,
   ...tableRoutes,
   ...tabRoutes,
+  ...clipboardRoutes,
   // {
   //   path: '*',
   //   redirect: '/404',
