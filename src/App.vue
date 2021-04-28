@@ -16,4 +16,11 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style lang="scss">
+.is-locale-active {
+  background-color: #1890ff;
+  span {
+    color: #fff;
+  }
+}
+</style>

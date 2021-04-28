@@ -5,7 +5,6 @@
 
       <div class="content-container">
         <bread-crumb></bread-crumb>
-        {{ locale }}
         <router-view v-slot="{ Component }">
           <transition name="fade-transform" mode="out-in">
             <component :is="Component" />

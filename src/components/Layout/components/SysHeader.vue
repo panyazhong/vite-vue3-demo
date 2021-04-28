@@ -16,8 +16,14 @@
         <GlobalOutlined />
         <template #overlay>
           <a-menu>
-            <a-menu-item v-for="language in languages" :key="language.value">
-              {{ language.label }}
+            <a-menu-item
+              v-for="language in languages"
+              :key="language.value"
+              :class="locale === language.value ? 'is-locale-active' : ''"
+            >
+              <a-button type="link" @click="chooseLanguage(language.value)">
+                {{ language.label }}
+              </a-button>
             </a-menu-item>
           </a-menu>
         </template>
@@ -33,6 +39,8 @@ import { FullscreenOutlined, GlobalOutlined } from '@ant-design/icons-vue';
 
 import screenful from 'screenfull';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { defineComponent, computed } from 'vue';
 
 const languages = [
   {
@@ -45,9 +53,10 @@ const languages = [
   },
 ];
 
-export default {
+export default defineComponent({
   setup() {
     const router = useRouter();
+    const store = useStore();
 
     const fullscreen = async () => {
       screenful.toggle();
@@ -55,12 +64,21 @@ export default {
     const login = async () => {
       router.push('/login');
     };
+
+    const chooseLanguage = async (val) => {
+      store.commit('SET_LANGUAGE', val);
+    };
+
+    const language = computed(() => store.getters.language);
+
     return {
       Logo,
       fullscreen,
       login,
       placement: 'bottomRight',
       languages,
+      chooseLanguage,
+      locale: language,
     };
   },
   components: {
@@ -68,7 +86,7 @@ export default {
     FullscreenOutlined,
     GlobalOutlined,
   },
-};
+});
 </script>
 
 <style scoped lang="scss">
