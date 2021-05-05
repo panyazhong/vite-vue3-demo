@@ -4,7 +4,7 @@
 
     <clip-board></clip-board>
 
-    <a-time-picker />
+    <!-- <a-time-picker /> -->
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <router-view></router-view>
   </div>
 </template>
@@ -17,6 +17,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+#app {
+  background: #f0f2f5;
+  min-height: calc(100vh);
+  padding-top: 60px;
+}
 .is-locale-active {
   background-color: #1890ff;
   span {

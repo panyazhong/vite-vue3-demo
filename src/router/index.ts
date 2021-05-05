@@ -10,6 +10,7 @@ import echartsRoutes from './modules/echarts';
 import tableRoutes from './modules/table';
 import tabRoutes from './modules/tab';
 import clipboardRoutes from './modules/clipboard';
+import iconsRoutes from './modules/icons';
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
@@ -41,6 +42,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...tableRoutes,
   ...tabRoutes,
   ...clipboardRoutes,
+  ...iconsRoutes,
   // {
   //   path: '*',
   //   redirect: '/404',

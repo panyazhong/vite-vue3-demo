@@ -51,8 +51,8 @@ export default {
 
 <style scoped lang="scss">
 .content-container {
-  margin-top: 60px;
   padding: 20px;
+
   ::v-deep .ant-breadcrumb {
     margin-bottom: 20px;
   }
