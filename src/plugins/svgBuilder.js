@@ -13,6 +13,7 @@ function findSvgFile(dir) {
   const dirents = readdirSync(dir, {
     withFileTypes: true,
   });
+
   for (const dirent of dirents) {
     if (dirent.isDirectory()) {
       svgRes.push(...findSvgFile(dir + dirent.name + '/'));
