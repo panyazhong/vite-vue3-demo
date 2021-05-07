@@ -11,6 +11,7 @@ import tableRoutes from './modules/table';
 import tabRoutes from './modules/tab';
 import clipboardRoutes from './modules/clipboard';
 import iconsRoutes from './modules/icons';
+import componentsRoutes from './modules/components';
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
@@ -43,6 +44,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...tabRoutes,
   ...clipboardRoutes,
   ...iconsRoutes,
+  ...componentsRoutes,
   // {
   //   path: '*',
   //   redirect: '/404',
