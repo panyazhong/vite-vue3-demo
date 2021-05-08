@@ -48,6 +48,15 @@ const componentsRoutes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/component/avatarUpload/index.vue'),
       },
+      {
+        path: 'drag-table',
+        name: 'DragTable',
+        meta: {
+          title: '拖拽表格',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/dragTable/index.vue'),
+      },
     ],
   },
 ];
