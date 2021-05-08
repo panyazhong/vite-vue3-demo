@@ -55,7 +55,7 @@ export default defineComponent({
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  ::v-deep .ant-card-meta-avatar {
+  :deep() .ant-card-meta-avatar {
     padding: 10px;
     border-radius: 10px;
   }

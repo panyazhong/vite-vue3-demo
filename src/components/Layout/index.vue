@@ -53,7 +53,7 @@ export default {
 .content-container {
   padding: 20px;
 
-  ::v-deep .ant-breadcrumb {
+  :deep() .ant-breadcrumb {
     margin-bottom: 20px;
   }
 }

@@ -39,10 +39,10 @@ export default defineComponent({
 .ant-tabs-card {
   background-color: #fff;
   border: 1px solid rgb(223, 225, 230);
-  ::v-deep .ant-tabs-content {
+  :deep() .ant-tabs-content {
     padding: 0px 10px 10px;
   }
-  ::v-deep .ant-tabs-bar {
+  :deep() .ant-tabs-bar {
     background-color: rgb(245, 247, 250);
   }
   .icon-con {

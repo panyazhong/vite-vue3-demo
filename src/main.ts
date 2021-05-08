@@ -10,6 +10,14 @@ import './permission';
 // import '@/icons';
 import svgIcon from './components/SvgIcon/index.vue';
 
+//markdown
+import VMdEditor from '@kangc/v-md-editor';
+import '@kangc/v-md-editor/lib/style/base-editor.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
+
+VMdEditor.use(githubTheme);
+
 const app = createApp(App);
 
 app
@@ -17,4 +25,5 @@ app
   .use(router)
   .use(Antd)
   .use(store)
+  .use(VMdEditor)
   .mount('#app');

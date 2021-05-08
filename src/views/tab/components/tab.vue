@@ -70,7 +70,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .ant-tabs-card {
   border: 1px solid rgb(240, 240, 240);
-  ::v-deep .ant-tabs-content {
+  :deep() .ant-tabs-content {
     padding: 0px 20px 20px !important;
   }
 }
