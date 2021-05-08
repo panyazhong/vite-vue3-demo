@@ -39,6 +39,15 @@ const componentsRoutes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/component/markdown/index.vue'),
       },
+      {
+        path: 'avatar-upload',
+        name: 'AvatarUpload',
+        meta: {
+          title: '头像上传',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/avatarUpload/index.vue'),
+      },
     ],
   },
 ];
