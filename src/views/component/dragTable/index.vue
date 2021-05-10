@@ -1,133 +1,83 @@
 <template>
   <div>
-    <a-alert type="info">
-      <template #description>
-        <span>
-          upload使用
-          <a style="color: rgb(255, 143, 143)"> antd </a>
-          的Upload组件，进行了简单的封装
-        </span>
-      </template>
-    </a-alert>
-    <a-upload
-      v-model:file-list="fileList"
-      name="avatar"
-      list-type="picture-card"
-      class="avatar-uploader"
-      :show-upload-list="false"
-      :before-upload="beforeUpload"
-      @change="handleChange"
-    >
-      <a-avatar :src="imageUrl" v-if="imageUrl" :size="128"></a-avatar>
-      <div v-else>
-        <loading-outlined v-if="loading"></loading-outlined>
-        <plus-outlined v-else></plus-outlined>
-        <div class="ant-upload-text">Upload</div>
-      </div>
-    </a-upload>
+    <table class="table table-striped draggable">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Sport</th>
+        </tr>
+      </thead>
+      <draggable v-model="list" tag="tbody" item-key="name" @change="onChange">
+        <template #item="{ element }">
+          <tr>
+            <td scope="row">{{ element.id }}</td>
+            <td>{{ element.name }}</td>
+            <td>{{ element.sport }}</td>
+          </tr>
+        </template>
+      </draggable>
+    </table>
+
+    <div class="list">
+      <a-alert message="list 数据" type="info" />
+      <a-row :gutter="16">
+        <a-col v-for="item in list" :key="item.id">
+          <a-card :title="item.name" :bordered="false">
+            <p>{{ item.id }}-{{ item.name }}-{{ item.sport }}</p>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
-import { message } from 'ant-design-vue';
 import { defineComponent, ref } from 'vue';
+import draggable from 'vuedraggable';
 
-import avatar from '@/assets/avatar.jpg';
-
-interface FileItem {
-  uid: string;
-  name?: string;
-  status?: string;
-  response?: string;
-  url?: string;
-  type?: string;
-  size: number;
-  originFileObj: any;
-}
-
-interface FileInfo {
-  file: FileItem;
-  fileList: FileItem[];
-}
-
-function getBase64(img: Blob, callback: (base64Url: string) => void) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result as string));
-  reader.readAsDataURL(img);
-}
 export default defineComponent({
   components: {
-    LoadingOutlined,
-    PlusOutlined,
+    draggable,
   },
   setup() {
-    const fileList = ref([]);
-    const loading = ref<boolean>(false);
-    const imageUrl = ref<string>(avatar);
+    const list = ref([
+      { name: 'dapan', id: 5, sport: 'basketball' },
+      { name: 'xiaoming', id: 6, sport: 'football' },
+      { name: 'potato', id: 7, sport: 'table tennis' },
+    ]);
 
-    const handleChange = (info: FileInfo) => {
-      if (info.file.status === 'uploading') {
-        loading.value = true;
-        return;
-      }
-      if (info.file.status === 'done') {
-        // Get this url from response in real world.
-        getBase64(info.file.originFileObj, (base64Url: string) => {
-          imageUrl.value = base64Url;
-          loading.value = false;
-        });
-      }
-      if (info.file.status === 'error') {
-        loading.value = false;
-        message.error('upload error');
-      }
-    };
-
-    const beforeUpload = (file: FileItem) => {
-      const isJpgOrPng =
-        file.type === 'image/jpeg' || file.type === 'image/png';
-      if (!isJpgOrPng) {
-        message.error('You can only upload JPG file!');
-      }
-      const isLt2M = file.size / 1024 / 1024 < 2;
-      if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-      }
-      return isJpgOrPng && isLt2M;
-    };
+    const onChange = (params: any) => {};
 
     return {
-      fileList,
-      loading,
-      imageUrl,
-      handleChange,
-      beforeUpload,
-      avatar,
+      list,
+      onChange,
     };
   },
 });
 </script>
-<style scoped>
-:deep() .avatar-uploader > .ant-upload {
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  margin-top: 20px;
+<style scoped lang="scss">
+.table {
+  width: 100%;
+  border: 1px solid rgb(240, 240, 240);
+  th {
+    border: 1px solid rgb(240, 240, 240);
+    border-top: none;
+    padding: 10px;
+    background-color: rgb(250, 250, 250);
+  }
+  td {
+    border: 1px solid rgb(240, 240, 240);
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+  }
 }
-.ant-upload-select-picture-card i {
-  font-size: 32px;
-  color: #999;
+.draggable {
+  td {
+    cursor: move;
+  }
 }
 
-.ant-upload-select-picture-card .ant-upload-text {
-  margin-top: 8px;
-  color: #666;
-}
-.ant-avatar-image {
-  transition: all 0.5s;
-  transform-origin: right;
-}
-.ant-upload:hover .ant-avatar-image {
-  transform: rotate(-90deg);
+.list {
+  margin-top: 20px;
 }
 </style>
