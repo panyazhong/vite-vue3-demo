@@ -3,6 +3,7 @@
     <a-input
       enter-button="clipboard"
       id="bar"
+      v-focus
       v-model:value="clipValue"
       placeholder="http://www.uinout.cn"
       style="width: 220px"

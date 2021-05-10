@@ -10,15 +10,20 @@ import './permission';
 // import '@/icons';
 import svgIcon from './components/SvgIcon/index.vue';
 
-//markdown
+// markdown
 import VMdEditor from '@kangc/v-md-editor';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
 import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
 import '@kangc/v-md-editor/lib/theme/style/github.css';
 
+// directives
+import focus from './directives/focus.js';
+
 VMdEditor.use(githubTheme);
 
 const app = createApp(App);
+
+app.directive('focus', focus);
 
 app
   .component('svg-icon', svgIcon)
