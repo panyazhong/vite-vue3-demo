@@ -12,6 +12,7 @@ import tabRoutes from './modules/tab';
 import clipboardRoutes from './modules/clipboard';
 import iconsRoutes from './modules/icons';
 import componentsRoutes from './modules/components';
+import excelRoutes from './modules/excel';
 
 export const constantRoutes: Array<RouteRecordRaw> = [
   ...hiddenRoutes,
@@ -45,6 +46,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...clipboardRoutes,
   ...iconsRoutes,
   ...componentsRoutes,
+  ...excelRoutes,
   // {
   //   path: '*',
   //   redirect: '/404',
