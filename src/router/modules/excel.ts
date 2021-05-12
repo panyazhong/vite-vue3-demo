@@ -19,7 +19,16 @@ const excelRoutes: Array<RouteRecordRaw> = [
           roles: ['admin', 'user'],
           title: '导出Excel',
         },
-        component: () => import('@/views/excel/index.vue'),
+        component: () => import('@/views/excel/defaultExcel/index.vue'),
+      },
+      {
+        path: 'export_table_excel',
+        name: 'ExportTableExcel',
+        meta: {
+          roles: ['admin', 'user'],
+          title: '导出表格Excel',
+        },
+        component: () => import('@/views/excel/tableExcel/index.vue'),
       },
     ],
   },
