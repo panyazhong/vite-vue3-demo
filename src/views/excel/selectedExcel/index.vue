@@ -9,17 +9,21 @@
       :columns="columns"
       :data-source="data"
       @change="onChange"
+      :row-selection="rowSelection"
       id="tableExcel"
     />
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, unref, computed } from 'vue';
+import { ColumnProps } from 'ant-design-vue/es/table/interface';
 
 import XLSX from 'xlsx';
 
+type Key = ColumnProps['key'];
+
 type TableDataType = {
-  key: string;
+  key: Key;
   name: string;
   age: number;
   address: string;
@@ -145,6 +149,10 @@ const data: TableDataType[] = [
 ];
 export default defineComponent({
   setup() {
+    const selectedRowKeys = ref<Key[]>([]);
+    const selectedRows = ref<any[]>([]);
+    const filename = ref('');
+
     const onChange = (
       pagination: PaginationType,
       filters: FilterType[],
@@ -153,12 +161,70 @@ export default defineComponent({
       console.log('params', pagination, filters, sorter);
     };
 
-    const filename = ref('');
+    const onSelectChange = (changableRowKeys: Key[]) => {
+      selectedRowKeys.value = changableRowKeys;
+      selectedRows.value = data.filter((item): boolean =>
+        selectedRowKeys.value.includes(item['key'])
+      );
+    };
+
+    const rowSelection = computed(() => {
+      return {
+        selectedRowKeys: unref(selectedRowKeys),
+        onChange: onSelectChange,
+        hideDefaultSelections: true,
+        selections: [
+          {
+            key: 'all-data',
+            text: 'Select All Data',
+            onSelect: () => {
+              selectedRowKeys.value = data.map((item) => item.key);
+              selectedRows.value = data.filter((item): boolean =>
+                selectedRowKeys.value.includes(item['key'])
+              );
+            },
+          },
+          {
+            key: 'odd',
+            text: 'Select Odd Row',
+            onSelect: (changableRowKeys: Key[]) => {
+              let newSelectedRowKeys = [];
+              newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+                if (index % 2 !== 0) {
+                  return false;
+                }
+                return true;
+              });
+              selectedRowKeys.value = newSelectedRowKeys;
+              selectedRows.value = data.filter((item): boolean =>
+                selectedRowKeys.value.includes(item['key'])
+              );
+            },
+          },
+          {
+            key: 'even',
+            text: 'Select Even Row',
+            onSelect: (changableRowKeys: Key[]) => {
+              let newSelectedRowKeys = [];
+              newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+                if (index % 2 !== 0) {
+                  return true;
+                }
+                return false;
+              });
+              selectedRowKeys.value = newSelectedRowKeys;
+              selectedRows.value = data.filter((item): boolean =>
+                selectedRowKeys.value.includes(item['key'])
+              );
+            },
+          },
+        ],
+      };
+    });
 
     const exportTable2Excel = () => {
       const wb = XLSX.utils.book_new();
-      const tableExcel = document.getElementsByTagName('table')[0];
-      const ws = XLSX.utils.table_to_sheet(tableExcel);
+      const ws = XLSX.utils.json_to_sheet(selectedRows.value);
 
       XLSX.utils.book_append_sheet(wb, ws);
 
@@ -167,6 +233,9 @@ export default defineComponent({
 
     return {
       data,
+      rowSelection,
+      selectedRows,
+      selectedRowKeys,
       filename,
       columns,
       onChange,

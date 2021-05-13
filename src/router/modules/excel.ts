@@ -30,6 +30,24 @@ const excelRoutes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/excel/tableExcel/index.vue'),
       },
+      {
+        path: 'export_selected_to_excel',
+        name: 'ExportSelected2Excel',
+        meta: {
+          roles: ['admin', 'user'],
+          title: '导出选中数据',
+        },
+        component: () => import('@/views/excel/selectedExcel/index.vue'),
+      },
+      {
+        path: 'import_excel',
+        name: 'ImportExcel',
+        meta: {
+          roles: ['admin', 'user'],
+          title: '导入Excel',
+        },
+        component: () => import('@/views/excel/importExcel/index.vue'),
+      },
     ],
   },
 ];

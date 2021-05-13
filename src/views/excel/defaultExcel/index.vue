@@ -42,7 +42,7 @@ export default defineComponent({
 
       XLSX.utils.book_append_sheet(wb, ws, 'file')
 
-      XLSX.writeFile(wb, `${filename.value}.xlsx`)
+      XLSX.writeFile(wb, `${filename.value ? filename.value : 'demo'}.xlsx`);
     }
     return {
       data,
