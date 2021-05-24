@@ -1,0 +1,1 @@
+import{d as a,k as s,l as t,e,o,f as r,g as n,j as c}from"./vendor.6c337aab.js";const d=a({}),v=c();s("data-v-3b975a9a");const l={class:"skeleton"};t();const p=v(((a,s,t,c,d,v)=>{const p=e("a-skeleton");return o(),r("div",l,[n(p,{avatar:"",active:"",paragraph:{rows:4}})])}));d.render=p,d.__scopeId="data-v-3b975a9a";export default d;
