@@ -18,7 +18,8 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
-  background: #f0f2f5;
+  background: rgb(244, 243, 239);
+  // background: #f0f2f5;
   min-height: calc(100vh);
   padding-top: 60px;
 }

@@ -32,6 +32,7 @@
       v-model:activeKey="activeKey"
       :size="size"
       :tab-position="mode"
+      class="tab"
     >
       <a-tab-pane key="1" tab="description">
         <description-com></description-com>
@@ -70,8 +71,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .ant-tabs-card {
   border: 1px solid rgb(240, 240, 240);
-  :deep() .ant-tabs-content {
+  :deep(.ant-tabs-content) {
     padding: 0px 20px 20px !important;
   }
+}
+.tab {
+  background: #fff;
 }
 </style>

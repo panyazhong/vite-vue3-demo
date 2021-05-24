@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import panelTitle from '@/components/panelTitle/index.vue';
-import mixCharts from './components/mix_charts.vue';
+import mixCharts from '@/components/Echarts/MixCharts.vue';
 
 export default defineComponent({
   setup() {},
@@ -22,6 +22,5 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .mix-charts {
-
 }
 </style>

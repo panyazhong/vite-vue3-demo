@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import panelTitle from '@/components/panelTitle/index.vue';
-import LineCharts from './components/line_charts.vue';
+import LineCharts from '@/components/Echarts/LineCharts.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   setup() {},

@@ -20,6 +20,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Home',
     component: Layout,
+    redirect: '/dashboard',
     meta: {
       title: '概览',
       roles: ['admin'],

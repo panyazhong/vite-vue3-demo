@@ -30,6 +30,7 @@ export default defineComponent({
   font-weight: 550;
   margin-bottom: 20px;
   border-left: 4px solid #1890ff;
+  background: #fff;
   color: rgb(70, 70, 70);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',

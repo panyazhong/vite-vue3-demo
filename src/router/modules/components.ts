@@ -57,6 +57,42 @@ const componentsRoutes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/component/dragTable/index.vue'),
       },
+      {
+        path: 'timeline',
+        name: 'TimeLine',
+        meta: {
+          title: 'timeline',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/timeLine/index.vue'),
+      },
+      {
+        path: 'skeleton',
+        name: 'Skeleton',
+        meta: {
+          title: '骨架屏',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/skeleton/index.vue'),
+      },
+      {
+        path: 'carousel',
+        name: 'Carousel',
+        meta: {
+          title: '走马灯',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/carousel/index.vue'),
+      },
+      {
+        path: 'calendar',
+        name: 'Calendar',
+        meta: {
+          title: '日历',
+          roles: ['admin', 'user'],
+        },
+        component: () => import('@/views/component/calendar/index.vue'),
+      },
     ],
   },
 ];
