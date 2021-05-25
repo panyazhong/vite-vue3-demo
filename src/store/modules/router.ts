@@ -4,6 +4,7 @@ import { asyncRoutes, constantRoutes } from '../../router/index';
 import router from '../../router';
 
 function hasPermission(temp: any, role: string) {
+  if (!temp.meta.roles) return true;
   return temp.meta.roles.includes(role);
 }
 

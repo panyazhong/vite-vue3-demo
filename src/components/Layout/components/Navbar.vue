@@ -8,11 +8,8 @@
       style="display: flex"
     >
       <div v-for="route in routes" :key="route.name">
-        <a-menu-item v-if="route.meta.click" :key="route.name">
-          <span>{{ route.children[0].meta.title }}</span>
-        </a-menu-item>
         <a-menu-item
-          v-else-if="!route.children && !route.meta.hidden"
+          v-if="!route.children && !route.meta.hidden"
           :key="route.name"
         >
           {{ route.meta.title }}

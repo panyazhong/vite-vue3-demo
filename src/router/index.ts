@@ -5,6 +5,7 @@ import {
   RouteRecordRaw,
 } from 'vue-router';
 import Layout from '../components/Layout/index.vue';
+import NotFound from '../components/NotFound/index.vue';
 import hiddenRoutes from './hide';
 import echartsRoutes from './modules/echarts';
 import tableRoutes from './modules/table';
@@ -48,10 +49,14 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   ...iconsRoutes,
   ...componentsRoutes,
   ...excelRoutes,
-  // {
-  //   path: '*',
-  //   redirect: '/404',
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
+    meta: {
+      hidden: true,
+    },
+  },
 ];
 
 const router = createRouter({
