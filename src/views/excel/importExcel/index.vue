@@ -72,7 +72,7 @@ export default defineComponent({
             type: 'binary',
           });
 
-        const json: Json[] = XLSX.utils.sheet_to_json(wb.Sheets['file']);
+        const json: Json[] = XLSX.utils.sheet_to_json(wb.Sheets['Sheet1']);
 
         tableData.value = json;
         tableData.value.forEach((item: Json, index: number) => {
